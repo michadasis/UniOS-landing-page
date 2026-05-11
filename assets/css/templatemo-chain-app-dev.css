@@ -2520,3 +2520,68 @@ responsive
     padding: 30px;
   }
 }
+
+/* ══════════════════════════════════════
+   UniOS – final fixes (single source of truth)
+   ══════════════════════════════════════ */
+
+/* Prevent horizontal scrollbar */
+html, body {
+  overflow-x: hidden;
+}
+
+/* Fill the page bottom with the footer's teal end-color
+   so NO white gap can ever show, regardless of viewport height */
+html {
+  background-color: #43d7fb;
+}
+
+/* Kill the services decorations that overflow below the page */
+.services:after,
+.services:before {
+  display: none !important;
+}
+
+/* Remove the phantom 80px gap on social icons */
+.social a {
+  margin-bottom: 0 !important;
+}
+
+/* Contact section – plain white, clipped */
+#contact {
+  background: #fff !important;
+  overflow: hidden !important;
+}
+
+/* Footer:
+   - background-color fills any gap the PNG doesn't cover
+   - background-size: 100% auto stretches to viewport width and
+     scales height proportionally so the wave always reaches the bottom
+   - padding-top keeps text below the wave crest (~300px from top of image)
+   - no margin-top (contact sits directly above)                          */
+footer {
+  margin-top: 0 !important;
+  background-color: #43d7fb !important;
+  background-size: 100% auto !important;
+  background-position: top center !important;
+  padding-top: 300px !important;
+  padding-bottom: 0 !important;
+}
+
+/* Remove the 50px gap above copyright that adds extra height */
+footer .copyright-text p {
+  margin-top: 30px !important;
+  padding-bottom: 30px !important;
+}
+
+/* Remove any default body margin/padding that shows as white below footer */
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+footer {
+  display: block;
+  width: 100%;
+  margin-bottom: 0 !important;
+}
