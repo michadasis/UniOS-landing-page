@@ -142,17 +142,39 @@ $(function() {
 
   function onScroll(event){
       var scrollPos = $(document).scrollTop();
-      $('.nav a').each(function () {
-          var currLink = $(this);
-          var refElement = $(currLink.attr("href"));
-          if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
-              $('.nav ul li a').removeClass("active");
-              currLink.addClass("active");
-          }
-          else{
-              currLink.removeClass("active");
+      var headerHeight = $('header').outerHeight() + 10;
+      var sections = [];
+
+      // Build list of sections from nav links
+      $('.nav a[href^="#"]').each(function () {
+          var href = $(this).attr("href");
+          var section = $(href);
+          if (section.length) {
+              sections.push({
+                  link: $(this),
+                  top: section.offset().top - headerHeight
+              });
           }
       });
+
+      // Activate the last section whose top we have scrolled past
+      var active = null;
+      for (var i = 0; i < sections.length; i++) {
+          if (scrollPos >= sections[i].top) {
+              active = sections[i].link;
+          }
+      }
+
+      // Also activate last section when near bottom of page
+      var nearBottom = $(document).height() - $(window).height() - scrollPos < 60;
+      if (nearBottom && sections.length > 0) {
+          active = sections[sections.length - 1].link;
+      }
+
+      $('.nav a').removeClass("active");
+      if (active) {
+          active.addClass("active");
+      }
   }
 
 
