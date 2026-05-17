@@ -2364,7 +2364,12 @@ responsive
   }
 
   .logo img {
-    height: 80px;
+    /* height: 80px; */
+
+    height: 28px;   
+    width: auto;
+    max-height: 100%;
+    object-fit: contain;
   }
 
   h2 {
@@ -2430,6 +2435,9 @@ responsive
   .header-area .main-nav .logo h4 img {
     max-width: 30px;
     margin-left: 5px;
+
+    height: 70px;
+    overflow: hidden;
   }
   .main-banner .info-stat {
     margin-bottom: 15px;
@@ -2529,6 +2537,7 @@ responsive
 /* Prevent horizontal scrollbar */
 html, body {
   overflow-x: hidden;
+  font-family: 'Poppins', sans-serif;
 }
 
 /* Fill the page bottom with the footer's teal end-color
